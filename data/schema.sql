@@ -1,17 +1,19 @@
-CREATE Table cities (
+CREATE Table IF NOT EXISTS cities (
     id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
     state TEXT NOT NULL,
+    state_fips TEXT NOT NULL,
+    place_fips TEXT NOT NULL,
     UNIQUE (name, state)
 );
 
-CREATE Table sources (
+CREATE Table IF NOT EXISTS sources (
     id INTEGER PRIMARY KEY,
     name TEXT NOT NULL UNIQUE,
     url TEXT NOT NULL
 );
 
-CREATE Table metric_types (
+CREATE Table IF NOT EXISTS metric_types (
     id INTEGER PRIMARY KEY,
     code TEXT NOT NULL UNIQUE,
     name TEXT NOT NULL,
@@ -20,7 +22,7 @@ CREATE Table metric_types (
     higher_is_better BOOLEAN NOT NULL
 );
 
-CREATE Table city_metrics (
+CREATE Table IF NOT EXISTS city_metrics (
     city_id INTEGER NOT NULL,
     metric_type_id INTEGER NOT NULL,
     source_id INTEGER NOT NULL,
@@ -33,7 +35,7 @@ CREATE Table city_metrics (
     FOREIGN KEY (source_id) REFERENCES sources(id)
 );
 
-CREATE Table city_scores (
+CREATE Table IF NOT EXISTS city_scores (
     city_id INTEGER NOT NULL,
     total_score REAL NOT NULL,
     timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -41,7 +43,7 @@ CREATE Table city_scores (
     FOREIGN KEY (city_id) REFERENCES cities(id)
 );
 
-CREATE Table city_metric_scores (
+CREATE Table IF NOT EXISTS city_metric_scores (
     city_id INTEGER NOT NULL,
     metric_type_id INTEGER NOT NULL,
     score REAL NOT NULL,

@@ -1,0 +1,7 @@
+2026-08-12 17:56:48,046 [INFO] === Resolving place FIPS codes by NAME ===
+2026-08-12 17:56:49,098 [INFO] 'Charlotte' (state_fips=37) candidates: [{'NAME': 'Charlotte city, North Carolina', 'state': '37', 'place': '12000'}]
+2026-08-12 17:56:49,888 [INFO] 'New York' (state_fips=36) candidates: [{'NAME': 'New York city, New York', 'state': '36', 'place': '51000'}, {'NAME': 'New York Mills village, New York', 'state': '36', 'place': '51011'}]
+2026-08-12 17:56:50,448 [INFO] 'Los Angeles' (state_fips=06) candidates: [{'NAME': 'Los Angeles city, California', 'state': '06', 'place': '44000'}]
+2026-08-12 17:56:50,449 [INFO] === merge() output (one line per city, ready for table insertion) ===
+2026-08-12 17:56:51,342 [INFO] 'Charlotte' detail_row={'B19013_001E': '82068', 'B25064_001E': '1612', 'state': '37', 'place': '12000'}
+2026-08-12 17:56:51,342 [INFO] 'Charlotte' subject_row={'S1701_C03_001E': '11.7', 'S2301_C04_001E': '4.6', 'S1501_C02_015E': '48.0', 'state': '37', 'place': '12000'}
