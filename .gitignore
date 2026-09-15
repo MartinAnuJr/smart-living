@@ -2,3 +2,7 @@ Claude.md
 .env
 .vscode/
 ingestion/venv
+__pycache__/
+*.pyc
+*.db
+engine/score

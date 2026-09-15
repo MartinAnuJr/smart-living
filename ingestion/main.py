@@ -1,6 +1,7 @@
 import sqlite3
 from pathlib import Path
 from sources.census import CensusConfig
+from normalization.normalize import Normalize
 
 DB_PATH = Path(__file__).parent.parent / "data" / "smart_living.db"
 SCHEMA_PATH = Path(__file__).parent.parent / "data" / "schema.sql"
@@ -33,6 +34,8 @@ def main():
     seed_metric_types()
     config = CensusConfig()
     config.merge(DB_PATH)
+    norm = Normalize()
+    norm.normalize_metrics(DB_PATH)
 
 if __name__ == "__main__":
     main()
