@@ -27,7 +27,7 @@ CREATE Table IF NOT EXISTS city_metrics (
     metric_type_id INTEGER NOT NULL,
     source_id INTEGER NOT NULL,
     raw_value REAL NOT NULL,
-    normalized_value REAL NOT NULL,
+    normalized_value REAL,
     timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (city_id, metric_type_id),
     FOREIGN KEY (city_id) REFERENCES cities(id),

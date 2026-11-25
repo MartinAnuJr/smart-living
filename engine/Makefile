@@ -2,11 +2,17 @@ CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra
 LIBS = -lsqlite3
 TARGET = score
-SRC = main.cpp
+SRC = main.cpp db.cpp
+OBJ = $(SRC:.cpp=.o)
 
-$(TARGET): $(SRC)
-	$(CXX) $(CXXFLAGS) $(SRC) -o $(TARGET) $(LIBS)
+# Link step: join the object files into the final executable
+$(TARGET): $(OBJ)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(TARGET) $(LIBS)
+
+# Compile step: each .cpp -> its own .o (rebuilt if the .cpp or db.h changes)
+%.o: %.cpp db.h
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 .PHONY: clean
 clean:
-	rm -f $(TARGET)
+	rm -f $(TARGET) $(OBJ)

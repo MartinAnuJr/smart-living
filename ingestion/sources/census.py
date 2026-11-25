@@ -93,10 +93,10 @@ class CensusConfig:
 
             metric_type_id = self.get_metric_type_id(conn, canon_name)
             conn.execute(
-                "INSERT INTO city_metrics (city_id, metric_type_id, source_id, raw_value, normalized_value) "
-                "VALUES (?, ?, ?, ?, ?) "
-                "ON CONFLICT(city_id, metric_type_id) DO UPDATE SET raw_value=excluded.raw_value, timestamp=CURRENT_TIMESTAMP",
-                (city_id, metric_type_id, source_id, float(raw_value), float(raw_value))
+                "INSERT INTO city_metrics (city_id, metric_type_id, source_id, raw_value) "
+                "VALUES (?, ?, ?, ?) "
+                "ON CONFLICT(city_id, metric_type_id) DO UPDATE SET raw_value=excluded.raw_value, timestamp=CURRENT_TIMESTAMP, normalized_value = NULL, source_id=excluded.source_id",
+                (city_id, metric_type_id, source_id, float(raw_value))
             )
 
     def merge(self, db_path):

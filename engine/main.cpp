@@ -1,13 +1,9 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <sqlite3.h>
-#include <iostream>
-#include <string>
-#include "db.cpp"
+#include "db.h"
 
 using namespace std;
 
 int main() {
-    Database db;
+    Database db("../data/smart_living.db");
+    vector<Fields> rows = db.pullData();
     return 0;
 }
