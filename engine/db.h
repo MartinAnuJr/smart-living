@@ -1,16 +1,8 @@
 #pragma once
+#include "types.h"
 #include <string>
 #include <vector>
 #include <sqlite3.h>
-
-struct Fields
-{
-    std::string city_name;
-    int city_id;
-    int metric_type_id;
-    std::string category;
-    double normalized_value;
-};
 
 class Database
 {
